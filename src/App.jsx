@@ -7,6 +7,9 @@ import { lazy, Suspense } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const SearchResult = lazy(() => import("./components/SearchResult"));
+const SearchResultInMobile = lazy(() =>
+  import("./components/SearchResultInMobile")
+);
 
 function App() {
   return (
@@ -14,6 +17,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<Home />} />
+
           <Route
             path="/:query/:startIndex"
             exact
@@ -25,7 +29,12 @@ function App() {
                   </div>
                 }
               >
-                <SearchResult />
+                <div className=" hidden md:block">
+                  <SearchResult />
+                </div>
+                <div className="  md:hidden">
+                  <SearchResultInMobile />
+                </div>
               </Suspense>
             }
           />
