@@ -19,7 +19,7 @@ const SearchResult = () => {
   const navigate = useNavigate();
 
   const fetchData = () => {
-    const nextPage = page + 1;
+    const nextPage = page + 10;
     fetchDataFromApi({
       q: query,
       start: nextPage,
